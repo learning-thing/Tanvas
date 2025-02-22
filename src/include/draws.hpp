@@ -19,6 +19,7 @@ class Canvas {
         vec2 winDimensions = vec2(1080, 720);
         DataLoader dl;
         vec2 dragstart;
+        vec2 dragstartC;
         vec2 pos = winDimensions/2;
         long double zoom = 10;
         float frameCount = 0;
@@ -107,6 +108,10 @@ class Canvas {
             //Dragging the Canvas
             if (IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE)) {//Get the position where we begin to drag
                 dragstart = MouseVec;
+                dragstartC = pos;
+            }
+            if (IsMouseButtonDown(MOUSE_BUTTON_MIDDLE)) {
+                pos = dragstartC+(MouseVec-dragstart);
             }
 
 
